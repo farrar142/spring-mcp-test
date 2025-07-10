@@ -15,12 +15,14 @@ class McpApplicationTests {
 	@Autowired
 	private ChatClient chatClient;
 
+	@Autowired
+	private ChatClient poolClient;
 
 	@Test
 	void testChatClient(){
-		String content = chatClient.prompt().user("2+2=?").call().content();
+		String content = poolClient.prompt("네가 사용 가능한 tool 목록을 알려줘?").call().content();
 		assertThat(content)
-				.contains("4");
+				.doesNotContain("spring_ai_mcp_client_filesystem_read_file");
 	}
 
 	@Test

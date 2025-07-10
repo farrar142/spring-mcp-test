@@ -25,16 +25,10 @@ public class AiConfig {
                 .defaultToolCallbacks(toolCallbackProvider.getToolCallbacks())
                 .build();
     }
-    @Bean
-    public ChatMemoryRepository chatMemoryRepository() {
-        return new InMemoryChatMemoryRepository();
-    }
 
     @Bean
-    public ChatMemory chatMemory(ChatMemoryRepository chatMemoryRepository) {
-        return MessageWindowChatMemory.builder()
-                .chatMemoryRepository(chatMemoryRepository)
-                .maxMessages(10)
+    public ChatClient poolClient(ChatClient.Builder chatClientBuilder) {
+        return chatClientBuilder
                 .build();
     }
 
