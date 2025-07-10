@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: mcp
+  config:
+    import: optional:file:.env[.properties]
