@@ -16,7 +16,7 @@ spring:
         stdio:
           connections:
             filesystem:
-              command: "npx"
+              command: "npx${WINDOW_NPX_FILE:}"
               args:
                 - "-y"
                 - "@modelcontextprotocol/server-filesystem"
